@@ -1,0 +1,19 @@
+{% extends 'post/base.html' %}
+
+{% block content %}
+<div class="space-y-4">
+    <h1 class="text-3xl">{{ category.title }}</h1>
+
+    {% for post in category.posts.all %}
+        <article class="p-6 bg-gray-100 rounded-xl">
+            <h2 class="text-3xl">{{ post.title }}</h2>
+
+            <span class="mb-4 block text-xs text-gray-600">{{ post.created_at }}</span>
+
+            <p class="mb-6">{{ post.intro }}</p>
+
+            <a href="{% url 'post_detail' post.slug %}" class="text-emerald-500">Read more</a>
+        </article>
+    {% endfor %}
+</div>
+{% endblock %}
